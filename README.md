@@ -70,6 +70,6 @@ It isn't required to write down semicolons.
 
 ## References
 - https://www.geeksforgeeks.org/higher-order-functions-in-scala/
-
+- https://alvinalexander.com/scala/scala-ternary-operator-syntax
 
 
