@@ -1,15 +1,15 @@
 # My journey to learning scala
-This document will describe my learning process about learning a new programming paradigm and language.
+This document will describe my learning process about a new programming paradigm and language.
 
 
 ## Getting down the basics
 
-In order to get to know the language i'd have to start by gathering information about the basic features of the Scala language.
+In order to get to know the language I'd have to start by gathering information about the basic features of the Scala language.
 I'd like to get started with some key concepts such as functions, system functions(print text), loops, arrays and testing.
 
 ###Functions
 
-just like any new programming language or framework the first thing to do is obviously making an `Hello world` program.
+Just like any new programming language or framework the first thing to do is obviously making an `Hello world` program.
 
 ```Scala
 object Main {
@@ -19,9 +19,9 @@ object Main {
   }
 }
 ```
-Opposite to Java it seems scala writes down the notion with less syntax. To start you'de first have to define an Object or class. 
-Withing that Object you can house your functions. Functions are defined by the `def` syntax followed by the name and parameters. 
-System functions can be called directly without specifying syntax like `System.*.`. I really like the shorter way of writing these down reducing the amount of syntax needed to read.
+Opposite to Java it seems you need less syntax in scala to achieve the same functionality. To start you'de first have to define an Object or class. 
+Within that Object you can house your functions. Functions are defined by the `def` syntax followed by the name and parameters. 
+System functions can be called directly without specifying syntax like `System.*.`. I really like the shorter way of writing these down reducing the amount of syntax needed.
 
 ##Returning values in functions
 After fiddling with scala for a bit I have found out that scala has a unique way of returning values in functions.
@@ -31,8 +31,8 @@ After fiddling with scala for a bit I have found out that scala has a unique way
     if (x > y) x else y
   }
 ```
-This function will return an value of the type Double. but note the absence of the `return` statement. In scala it is not required
-to write down the return statement but instead you can write the logic and let it return the value of that logic
+This function will return an value of the type Double. But note the absence of the `return` statement. In scala it is not required
+to write down the return statement but instead you can write down the logic and let it return the value of that logic
 one more example:
 ```Scala
 def lowest(x: Double, y: Double): Double = {
