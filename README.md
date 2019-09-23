@@ -7,7 +7,7 @@ This document will describe my learning process about a new programming paradigm
 In order to get to know the language I'd have to start by gathering information about the basic features of the Scala language.
 I'd like to get started with some key concepts such as functions, system functions(print text), loops, arrays and testing.
 
-###Functions
+### Functions
 
 Just like any new programming language or framework the first thing to do is obviously making an `Hello world` program.
 
@@ -23,7 +23,7 @@ Opposite to Java it seems you need less syntax in scala to achieve the same func
 Within that Object you can house your functions. Functions are defined by the `def` syntax followed by the name and parameters. 
 System functions can be called directly without specifying syntax like `System.*.`. I really like the shorter way of writing these down reducing the amount of syntax needed.
 
-##Returning values in functions
+## Returning values in functions
 After fiddling with scala for a bit I have found out that scala has a unique way of returning values in functions.
 
 ```scala
@@ -42,9 +42,9 @@ def lowest(x: Double, y: Double): Double = {
 ```
 
 ## Higher order functions
-###In short what are higher order functions?
+### In short what are higher order functions?
 A higher order function is able to receive an function as input parameter and or is able to return an function.
-###Example
+### Example
 Imagine a function called `math` all this function can do is take three arguments the first is `x` the second is `y` and the third is a `function` This function 
 is the operation that has to take place on values `x` and `y`. In this example we will make a function that will return the highest value of the two.
 ```scala
@@ -64,7 +64,7 @@ Adding parentheses will execute the function and will return the result as as va
  
 
 
-##Extra
+## Extra
 It isn't required to write down semicolons.
 
 
