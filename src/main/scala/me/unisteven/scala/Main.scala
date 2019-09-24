@@ -1,5 +1,7 @@
 package me.unisteven.scala
 
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
+
 object Main {
 
   def main(args: Array[String]): Unit = {
@@ -9,6 +11,10 @@ object Main {
     println("concatenating list = " + printListOfStrings())
     val list: List[String] = List("first", "second", "last")
     println("All strings longer or equal to 5 characters = " + printListOfStringsLongerThen(5, list))
+    canArraysIncreaseInSize()
+    createAListOfNumbers()
+    fillArrayBuffer()
+    fillListBuffer()
   }
 
   def math(x: Double, y: Double, operation: (Double, Double) => Double): Double = operation(x, y)
@@ -45,6 +51,38 @@ object Main {
       output += s
     }
     output
+  }
+
+  def canArraysIncreaseInSize(): Unit ={
+//    val ar = Array(1)
+//    for(i <- 0 to 10){
+//      ar(i) = 1
+//    }
+//    println(ar)
+  }
+  def createAListOfNumbers(): Unit ={
+    var numbers: List[Int] = List()
+    for(i <- 0 to 10){
+      numbers = i :: numbers // the :: will 'add' an item to the list by replacing the entire list with a new list.
+    }
+    println(numbers)
+  }
+
+
+  def fillArrayBuffer(): Unit ={
+    var buf: ArrayBuffer[Int] = ArrayBuffer() // this is an arrayBuffer for the type of Int
+    for(i <- 0 to 10){
+      buf += i
+    }
+    println(buf)
+  }
+
+  def fillListBuffer(): Unit ={
+    var buf: ListBuffer[Int] = ListBuffer();
+    for(i <- 0 to 10){
+      buf += i
+    }
+    println(buf)
   }
 
 

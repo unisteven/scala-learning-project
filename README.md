@@ -112,12 +112,75 @@ using the following function call:
     println("All strings longer or equal to 5 characters = " + printListOfStringsLongerThen(5, list))
 ```
 
+### Lists
+During the process of learning how to use loops and for each loops I came across Lists, this made me curious what implementation 
+scala uses for a collection of items. Are there arrays? if so are they a fixed size or variable like an `ArrayList`? These are questions that come up as soon 
+as I think about Lists.
+
+### Are there arrays? (like Java)
+In scala an array is created by using the `Array(size)` syntax.  Arrays are fixed in size and can throw an Index out of bounds exception
+demonstrated by the following code
+```Scala
+  def canArraysIncreaseInSize(): Unit ={
+    val ar = Array(1)
+    for(i <- 0 to 10){
+      ar(i) = 1
+    }
+    println(ar)
+  }
+```
+Opposite to Java in Scala you define an array by using parentheses `()` instead of square brackets `[]`. the same goes for setting the value at a certain index.
+
+### Lists
+What I have found out in the previous chapter about `for each loops` is that Scala has Lists.
+Lists are just as simple to implement as an Array
+```Scala
+  def createAListOfNumbers(): Unit ={
+    var numbers: List[Int] = List()
+    for(i <- 0 to 10){
+      numbers = i :: numbers // the :: will 'add' an item to the list by replacing the entire list with a new list.
+    }
+    println(numbers)
+  }
+```
+However the problem with Lists is the same as with arrays. Lists are immutable thus making it impossible to add items. A way to overcome this is by overwriting the entire list with a new list plus one new
+item. But this is a expensive operation `O(N)`.  the `::` operator can be used to create a new list that will add the item in.
+A List is the implementation of a linked list in scala.
+
+### Mutable collection (ArrayList)
+In java the mutable variant of an array is the ArrayList. This list houses an ordinary array under the surface that can increase its size as soon as more items will be added to the array. Scala has the `ArrayBuffer` Implementation that does exactly the same.
+Scala also has the `ListBuffer` that will use an linkedList underneath the surface. The `ListBuffer` is useful for when you are planning on converting the ListBuffer to an immutable `List` later on.
+
+The implementation of the ArrayBuffer: 
+```Scala
+  def fillArrayBuffer(): Unit ={
+    var buf: ArrayBuffer[Int] = ArrayBuffer() // this is an arrayBuffer for the type of Int
+    for(i <- 0 to 10){
+      buf += i
+    }
+    println(buf)
+  }
+```
+
+The implementation of the ListBuffer:
+```Scala
+def fillListBuffer(): Unit ={
+    var buf: ListBuffer[Int] = ListBuffer();
+    for(i <- 0 to 10){
+      buf += i
+    }
+    println(buf)
+  }
+```
+
+## Generics
+
 ## Extra
 It isn't required to write down semicolons.
 
 
-## References
+## References````
 - https://www.geeksforgeeks.org/higher-order-functions-in-scala/
 - https://alvinalexander.com/scala/scala-ternary-operator-syntax
-
+- https://docs.scala-lang.org/overviews/collections/concrete-mutable-collection-classes.html
 
