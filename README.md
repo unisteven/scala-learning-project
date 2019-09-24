@@ -174,6 +174,37 @@ def fillListBuffer(): Unit ={
 ```
 
 ## Generics
+After playing a bit with the Lists I found out that in order to use the list I'd have to specify the type of the var.
+```Scala
+var buf: ListBuffer[Int] = ListBuffer();
+```
+In the square brackets `[]` I specified the type. This looks like a generic implementation to me, so I'd like to figure out how I could make my own generics
+In my example I will make an basket, this basket is capable of holding one item of any type.
+
+the class:
+```Scala
+class Basket[T] {
+  private var item: T = null.asInstanceOf[T] // this is the way to intialize the variable
+
+  def setItem(item: T): Unit ={
+    this.item = item
+  }
+
+  def getItem(): T ={
+    this.item
+  }
+}
+```
+
+Filling the basket with an `Apple`:
+```Scala
+  def fillBasketWithFruitString(): Unit ={
+    val basket = new Basket[String]
+    basket.setItem("Apple")
+    println("the basket is holding: " + basket.getItem())
+  }
+```
+
 
 ## Extra
 It isn't required to write down semicolons.

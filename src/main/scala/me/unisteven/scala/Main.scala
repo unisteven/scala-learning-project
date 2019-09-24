@@ -15,6 +15,7 @@ object Main {
     createAListOfNumbers()
     fillArrayBuffer()
     fillListBuffer()
+    fillBasketWithFruitString()
   }
 
   def math(x: Double, y: Double, operation: (Double, Double) => Double): Double = operation(x, y)
@@ -85,5 +86,12 @@ object Main {
     println(buf)
   }
 
+  def fillBasketWithFruitString(): Unit ={
+    val basket = new Basket[String]
+    basket.setItem("Apple")
+    println("the basket is holding: " + basket.getItem())
+  }
 
 }
+
+
