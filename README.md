@@ -205,13 +205,36 @@ Filling the basket with an `Apple`:
   }
 ```
 
+## Interfaces (traits)
+
+
+## functional programming
+In the previous chapters I have covered some of the basics of the language. I have even included a functional part about higher level functions. But scala has way more functional options Under this section I aim to expolore a few of these options I came across
+For this section I will use the following video https://www.youtube.com/watch?v=R0jVqeYzs9c as starting point.
+
+
+### exceptions in functions
+
+### Future[] 
+
+### ADTS
+
+### Value classes (domain logic)
+
+### Implicit
+- https://docs.scala-lang.org/tour/implicit-parameters.html
+
+
+
+
 
 ## Extra
 It isn't required to write down semicolons.
 
 
-## References````
+## References
 - https://www.geeksforgeeks.org/higher-order-functions-in-scala/
 - https://alvinalexander.com/scala/scala-ternary-operator-syntax
 - https://docs.scala-lang.org/overviews/collections/concrete-mutable-collection-classes.html
-
+- https://www.youtube.com/watch?v=R0jVqeYzs9c
+- https://docs.scala-lang.org/tour/implicit-parameters.html
