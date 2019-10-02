@@ -206,7 +206,24 @@ Filling the basket with an `Apple`:
 ```
 
 ## Interfaces (traits)
+traits are the equivalent of interfaces. A trait can be used as an abstract layer between to talk to instead of the implementation.
+this is part of the Object orientated programming paradigm, for that reason I wont dive deep into the inner workings on traits but here 
+are a few examples on how to use them:
+```Scala
 
+trait Fruit {
+  def eat()
+}
+
+object Apple extends Fruit {
+  override def eat(): Unit = {
+    println("nom nom nom")
+  }
+}
+
+
+```
+this just demonstrates a simple way on how to use a trait in scala. 
 
 ## functional programming
 In the previous chapters I have covered some of the basics of the language. I have even included a functional part about higher level functions. But scala has way more functional options Under this section I aim to expolore a few of these options I came across
@@ -214,8 +231,34 @@ For this section I will use the following video https://www.youtube.com/watch?v=
 
 
 ### exceptions in functions
+In functional programming there are no null values and no exceptions. However if you create statements there is the possibility that there might be something wrong with the input or operation.
+This would require an exception to be thrown so how do we handle this in scala?
 
-### Future[] 
+A way to solve this is by returning a value like `Some`, `Option` or `None`. These functions can be used  
+```Scala
+def toInt(s: String): Option[Int] = {
+    try {
+        Some(Integer.parseInt(s.trim))
+    } catch {
+        case e: Exception => None
+    }
+}
+```
+You can later match these results to get the correct output:
+```Scala
+toInt(x) match {
+    case Some(i) => println(i)
+    case None => println("That didn't work.")
+}
+```
+this is sort of the replacement of a null value.
+
+### Future
+Another nice thing from scala is the `Future` function. this is a way to run an concurrent operation on a different thread.
+for example:
+```Scala
+//TODO
+```
 
 ### ADTS
 
