@@ -257,15 +257,73 @@ this is sort of the replacement of a null value.
 Another nice thing from scala is the `Future` function. this is a way to run an concurrent operation on a different thread.
 for example:
 ```Scala
-//TODO
-```
+import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.concurrent.duration._
+import scala.language.postfixOps
 
-### ADTS
+object Test {
+
+  implicit val ec: ExecutionContext = ExecutionContext.global
+
+  def main(args: Array[String]): Unit = {
+    println("lets wait for....")
+    val f = Future {
+      letsWait(2)
+    }
+    println("I'm done waiting")
+    Await.result(f, 10 second)
+  }
+
+  def letsWait(seconds: Int): Unit = {
+    Thread.sleep(seconds * 1000)
+    println("Lets wait method is done waiting")
+  }
+}
+
+```
+Please note that in this example I've included the imports as well. This is because the Future function does require some special imports such as the postFixOps and duration.
+These are needed for the Await function. The Await function is required for this example as the main thread will stop before the other threads are finished. in order to prevent this I have added the
+await function. For production applications that run continuously it is not needed to include the await function. For those scenarios you could chain the `onComplete` to the Future. This is the equivalent 
+of an promise in Javascript.
+```Scala
+val f = Future {
+      letsWait(2)
+    }
+f onComplete {
+      case Success(value) => {
+        println("success")
+      }
+      case Failure(exception) => {
+        println("failure")
+      }
+}
+
+
+```
+The oncomplete will have two cases the `Failure` and the `Success` case. The success will give the value returned by the Future and the Failure face will return an exception.
+
+There is also the option to have the `Map` function on the Future. This will map all elements returned from the Future where an operation could further transform the data.
 
 ### Value classes (domain logic)
+Values classes can be seen as an type or 'object'. By defining an value class you can be sure that you use the correct type for a method.
+You can use it do make it easier to see what domain it is in. For example:
+```Scala
+case class Banana(peal: Boolean, eaten: Boolean, radioactive: Boolean)
+```
+This can be used to create a new object called banana or it can be used to define an type for parameters of an method.
+```Scala
+  def makeAndEatBanana(notUsed: Banana): Unit ={
+    val banana = Banana(true, false, true)
+    println(s"this banana has been eaten: ${banana.eaten}")
+  }
+```
+
+
 
 ### Implicit
 - https://docs.scala-lang.org/tour/implicit-parameters.html
+- http://baddotrobot.com/blog/2015/07/14/scala-implicit-functions/
+
 
 
 

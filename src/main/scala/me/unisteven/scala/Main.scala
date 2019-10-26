@@ -4,6 +4,9 @@ import scala.concurrent.{ExecutionContext, Future}
 
 object Main {
 
+
+  implicit val ec: ExecutionContext = ExecutionContext.global
+
   def main(args: Array[String]): Unit = {
     println("the max of 10, 99 = " + math(10, 99, highest))
     println("the lowest of 10, 99 = " + math(10, 99, lowest))
@@ -17,9 +20,10 @@ object Main {
     fillListBuffer()
     fillBasketWithFruitString()
     println("lets wait for....")
-//    val f = Future {
-//      letsWait(2)
-//    }
+    val f = Future {
+      letsWait(2)
+    }
+
     println("I'm done waiting")
   }
 
