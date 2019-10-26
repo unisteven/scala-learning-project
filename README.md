@@ -318,19 +318,46 @@ This can be used to create a new object called banana or it can be used to defin
   }
 ```
 
-
-
-### Implicit
-- https://docs.scala-lang.org/tour/implicit-parameters.html
-- http://baddotrobot.com/blog/2015/07/14/scala-implicit-functions/
-
-
-
-
-
-
 ## Extra
 It isn't required to write down semicolons.
+
+
+## An example application
+
+For this assignment I'd need to write a program with the new knowledge I obtained from writing this 'blog',
+The program will be an web crawler system with as starting point my own website: https://serverlist.games/ I'd like it to craw the entire website and crawl all links on the website
+This will be done for a X amount of times with the X standing for a level. Each level is a new website that contains links.
+
+The crawler will have the support of scanning through all results really fast via an web interface.  You can give any url to the website and you can set a maximum of websites to crawl and or an maximum level.
+
+The crawler seems like an exiting challenge for me although it sounds easy to crawl a website by just sending a simple http request and reading the body it seems more challenging since many modern websites
+are build using a javascript framework as a single page application. This means I'd first have to figure out how to load the content of an website. And then how to filter out the links of the page and crawl those.
+I'd also have to know what page has already been crawled before and when the page is no longer on the same domain so I can keep track of the correct level of the crawler. Some of these seem really challenging to me and others should be a breeze.
+
+### I've hot some difficulties
+
+Whilst trying to figure out how to make a crawler that will support Javascript content too I hit a roadblock.
+It seems you'de require an entire system (headless browser) in order to crawl that type of content. And since that will
+take way too much time to setup and or build I've chosen to make the application a bit simpler that will only support websites made of plain html with all content already loaded.
+
+My code exists of 3 parts the `Crawler`, `CrawlerMain` and the `HttpRequest`. The CrawlerMain as the name might imply is the starting point for this application. 
+The Crawler itself will do a few things:
+- recursively call itself with the results of the previous run
+- save all results to a list and check if they already exist
+
+The httpRequest will do the following:
+- It will get the content of a website using an GET request
+- It will filter out all the `<a href=""></a>` tags from the content.
+- For each Anchor tag it will convert it to the pure url form `https://example.com`.
+- it will map all those results to only include urls that are valid within the Anchor tags
+- after that it will map all those results and transform it to the string variant
+- this will be converted to an array.
+
+In theory these are all steps needed for a simple web crawler.
+
+
+ 
+
 
 
 ## References
