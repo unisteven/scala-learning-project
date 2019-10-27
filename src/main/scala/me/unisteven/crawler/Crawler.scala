@@ -1,36 +1,29 @@
 package me.unisteven.crawler
 
 import scala.collection.mutable.ListBuffer
-import scala.concurrent.{Await, ExecutionContext, Future}
-import scala.language.postfixOps
-import scala.concurrent.duration._
-import scala.util.{Failure, Success}
 
 class Crawler {
 
-  val MAXLEVEL: Int = 4;
+  val MAXLEVEL: Int = 3;
+  var duplicates = 1
   val http: HttpRequest = new HttpRequest
-  var urls: ListBuffer[String] = new ListBuffer[String]
-  implicit val ec: ExecutionContext = ExecutionContext.global
+  var urls: ListBuffer[Website] = new ListBuffer[Website]
 
-  def crawlRecursively(url: String, level: Int): List[String] ={
-    if(level >= MAXLEVEL){
+  def crawlRecursively(website: Website, level: Int): List[Website] = {
+    if (level >= MAXLEVEL) {
       return urls.toList // end condition
     }
-    val f = Future {
-      http.getAllUrlsFromUrl(url).foreach(saveUrlsToListAndCallRecursive(_, level))
-    }
-    Await.result(f, 10 days)
-//    http.getAllUrlsFromUrl(url).foreach(saveUrlsToListAndCallRecursive(_, level))
+    http.getAllUrlsFromUrl(website.url).foreach(saveUrlsToListAndCallRecursive(_, level))
     urls.toList
   }
 
-  def saveUrlsToListAndCallRecursive(content: String, level: Int): Unit ={
-    if(urls.contains(content)){
+  def saveUrlsToListAndCallRecursive(content: Website, level: Int): Unit = {
+    if (urls.exists(_.url.equals(content.url))) {
+      duplicates = duplicates + 1
       return // return in case the url already exists so it wont crawl it twice.
     }
-    println(s"found($level): $content")
+    println(s"found($level): (${content.url}, ${content.title})")
     urls += content
-    crawlRecursively(content, level + 1);
+    crawlRecursively(content, level + 1)
   }
 }

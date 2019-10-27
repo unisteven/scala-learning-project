@@ -354,10 +354,12 @@ The httpRequest will do the following:
 - this will be converted to an array.
 
 These are all steps needed for a simple web crawler. This can be further expanded with saving the title of the page and use that to return a list of urls that match certain keywords
-The application can also be made multi threaded in order to increase the speed of crawling.
 
-In order to make the assignment a bit more challenging I will try to include these new options. Starting with making it multi threaded.
-As I've learned at the beginning of the blog `Future`is the option to go multithreaded. 
+In order to make the assignment a bit more challenging I will try to include these new options. 
+
+I have added in the system that will also save the title for each website crawled. This new addition will allow me to make a few sorting functions to get the correct results.
+During the implementation I found out that the system struggles with relative URLS on websites `<a href="/test"></a>` So far I have not been able to come up with a good solution
+so the application will be limited to urls starting with `http(s)://` 
 
 
  
