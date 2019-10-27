@@ -362,6 +362,19 @@ During the implementation I found out that the system struggles with relative UR
 so the application will be limited to urls starting with `http(s)://` 
 
 
+
+
+## Summary
+In short what do I think about scala after researching it for the past few weeks.
+I think scala is a nice language that runs on the JVM I really like that you can use scala besides any Java project. 
+This makes it easy to implement in existing code. I also like some of the functional aspects of the language such as higher order functions.
+and the map, filter and find functions of lists. These are a few things I would use quite frequently in my own projects. 
+The challenge I gave myself was a bit to complicated at the beginning but after adjusting it a bit it felt just right.
+I don't think the challenge solves a real problem but it did help me to understand the language even further by getting my hands dirty coding it.
+My overall experience has been good with scala however I'd do have to get used to some of the notation of writing down methods.
+For my own projects I'd rather stick to conventional Object Orientated programming as that seems better readable. But a few of the functional aspects I
+will certainly use. Such as Lambda's in Java.
+
  
 
 
