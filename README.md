@@ -353,7 +353,11 @@ The httpRequest will do the following:
 - after that it will map all those results and transform it to the string variant
 - this will be converted to an array.
 
-In theory these are all steps needed for a simple web crawler.
+These are all steps needed for a simple web crawler. This can be further expanded with saving the title of the page and use that to return a list of urls that match certain keywords
+The application can also be made multi threaded in order to increase the speed of crawling.
+
+In order to make the assignment a bit more challenging I will try to include these new options. Starting with making it multi threaded.
+As I've learned at the beginning of the blog `Future`is the option to go multithreaded. 
 
 
  

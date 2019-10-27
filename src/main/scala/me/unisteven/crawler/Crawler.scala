@@ -1,17 +1,27 @@
 package me.unisteven.crawler
 
 import scala.collection.mutable.ListBuffer
+import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.language.postfixOps
+import scala.concurrent.duration._
+import scala.util.{Failure, Success}
 
 class Crawler {
 
-  val MAXLEVEL: Int = 2;
+  val MAXLEVEL: Int = 4;
   val http: HttpRequest = new HttpRequest
   var urls: ListBuffer[String] = new ListBuffer[String]
+  implicit val ec: ExecutionContext = ExecutionContext.global
+
   def crawlRecursively(url: String, level: Int): List[String] ={
     if(level >= MAXLEVEL){
       return urls.toList // end condition
     }
-    http.getAllUrlsFromUrl(url).foreach(saveUrlsToListAndCallRecursive(_, level));
+    val f = Future {
+      http.getAllUrlsFromUrl(url).foreach(saveUrlsToListAndCallRecursive(_, level))
+    }
+    Await.result(f, 10 days)
+//    http.getAllUrlsFromUrl(url).foreach(saveUrlsToListAndCallRecursive(_, level))
     urls.toList
   }
 
