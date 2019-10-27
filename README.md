@@ -1,3 +1,10 @@
+# About me
+**Name**: Steven Krol
+
+**Student number**: 597272
+
+**Date**: 27-10-2019
+
 # My journey to learning scala
 This document will describe my learning process about a new programming paradigm and language.
 
@@ -334,7 +341,7 @@ The crawler seems like an exiting challenge for me although it sounds easy to cr
 are build using a javascript framework as a single page application. This means I'd first have to figure out how to load the content of an website. And then how to filter out the links of the page and crawl those.
 I'd also have to know what page has already been crawled before and when the page is no longer on the same domain so I can keep track of the correct level of the crawler. Some of these seem really challenging to me and others should be a breeze.
 
-### I've hot some difficulties
+### I've hit some difficulties
 
 Whilst trying to figure out how to make a crawler that will support Javascript content too I hit a roadblock.
 It seems you'de require an entire system (headless browser) in order to crawl that type of content. And since that will
@@ -361,6 +368,20 @@ I have added in the system that will also save the title for each website crawle
 During the implementation I found out that the system struggles with relative URLS on websites `<a href="/test"></a>` So far I have not been able to come up with a good solution
 so the application will be limited to urls starting with `http(s)://` 
 
+It is also possible to give in a few keywords to the `CrawlerMain` object. It will match all results with the keywords and return a list of websites of which the titles contain any of the keywords
+
+```Scala
+   val startingURL: String = "https://stackoverflow.com/";
+   val crawler = new Crawler
+   val keywords = Array("apps", "scala", "kotlin")
+  
+   def main(args: Array[String]): Unit = {
+    val urls = crawler.crawlRecursively(Website(startingURL, "begin"), 0)
+    println("The following url's match the search keywords")
+    val matched = crawler.matchKeyWords(keywords, urls)
+    matched.foreach(println(_));
+   }
+```
 
 
 
@@ -375,7 +396,7 @@ My overall experience has been good with scala however I'd do have to get used t
 For my own projects I'd rather stick to conventional Object Orientated programming as that seems better readable. But a few of the functional aspects I
 will certainly use. Such as Lambda's in Java.
 
- 
+
 
 
 

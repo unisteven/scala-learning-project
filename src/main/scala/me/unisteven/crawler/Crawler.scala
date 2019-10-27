@@ -4,6 +4,7 @@ import scala.collection.mutable.ListBuffer
 
 class Crawler {
 
+
   val MAXLEVEL: Int = 3;
   var duplicates = 1
   val http: HttpRequest = new HttpRequest
@@ -26,4 +27,17 @@ class Crawler {
     urls += content
     crawlRecursively(content, level + 1)
   }
+
+
+  var matchingUrls: ListBuffer[Website] = new ListBuffer[Website]
+
+  def matchKeyWords(keywords: Array[String], urls: List[Website]): List[Website] = {
+    keywords.foreach(matchKeyWord(_, urls))
+    matchingUrls.toList
+  }
+
+  def matchKeyWord(keyword: String, urls: List[Website]): Unit ={
+    matchingUrls.addAll(urls.filter(_.title.contains(keyword)))
+  }
+
 }
